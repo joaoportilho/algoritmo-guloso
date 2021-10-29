@@ -1,6 +1,6 @@
 # Escalonamento de tarefas
 import ordenador
-
+from random import randint
 # A função escalonar, que colocará somente as tarefas compatíveis.
 def escalonar(lista):
 
@@ -23,8 +23,25 @@ def escalonar(lista):
             listaFinal.append(listaOrdenada[i])
             tarefaBase = listaOrdenada[i]
     
-    # Abaixo percorremos a lista e mostramos os resultados finalistas.
-    print("As tarefas que foram escalonadas são:\n")
+    # Abaixo percorremos a lista e gravamos os resultados finalistas.
 
+    # Aqui damos o nome ao arquivo
+    numero = randint(0,10000000)
+
+    # Aqui é o caminho onde salvaremos o arquivo com os dados gravados
+    arquivo = open("escalonados/" + str(numero) + ".txt", "w")
+
+    # Abrimos o arquivo que será responsável por armazenar quantos elementos foram escalonados dessa vez
+    execucoes = open("dados.txt", "a")
+
+    # Aqui é o laço para salvarmos o as tarefas selecionadas
     for i in range(0, len(listaFinal), 1):
-        print("A tarefa: " + listaFinal[i].nome + "\nCom início em: " + str(listaFinal[i].inicio) + "\nE final em: " + str(listaFinal[i].fim) + "\n\n")
+        arquivo.write("A tarefa: " + listaFinal[i].nome + "\nCom início em: " + str(listaFinal[i].inicio) + "\nE final em: " + str(listaFinal[i].fim) + "\n\n")
+    
+    # Aqui terminamos de gravar os dados e em seguida fechamos o acesso ao arquivo
+    execucoes.write(str(len(listaFinal)) + " ")
+    execucoes.close()
+
+    # Aqui fechamos o arquivo responsável peloas tarefas selecioandas
+    print("Gravando as palavras selecionadas no arquivo!")
+    arquivo.close()

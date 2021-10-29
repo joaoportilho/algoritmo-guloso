@@ -1,6 +1,6 @@
 import tarefas
 import escalonador
-import random
+from random import randint
 
 # Definindo a lista para enviarmos ao sistema.
 listaTeste = []
@@ -27,12 +27,6 @@ tarefa3.fim = 9
 tarefa4.nome = "Outra conta"
 tarefa4.inicio = 2
 tarefa4.fim = 6
-
-for i in range(0, 100, 1):
-    tarefaAux  = tarefas.Tarefa()
-    tarefaAux.nome = "Tarefa" + str(i)
-    random.seed(10)
-    numero = range(10), k = 1
 
 # Estamos adicionando todas elas a uma lista.
 listaTeste.append(tarefa1)
